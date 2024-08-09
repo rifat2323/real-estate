@@ -1,0 +1,105 @@
+.text{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    font-weight: bold;
+    font-size: 3rem;
+     -webkit-text-fill-color: transparent;
+     -webkit-text-stroke-color: #fff;
+     -webkit-text-stroke-width: 3px;
+     pointer-events: none;
+      opacity: 0.2;
+}
+.text2{
+  
+   
+    font-weight: bold;
+    font-size: 4rem;
+     -webkit-text-fill-color: transparent;
+     -webkit-text-stroke-color: #333;
+     -webkit-text-stroke-width: 2px;
+     pointer-events: none;
+      opacity: 0.2;
+}
+
+.extra{
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    top: 10%;
+    left:2%;
+    transition: all 450ms ease-in ;
+    opacity: 0;
+    
+}
+.extra2{
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    top: 10%;
+    right:2%;
+    transition: all 450ms ease-in ;
+    opacity: 0;
+}
+.extra3{
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    bottom: 10%;
+    left:2%;
+    transition: all 450ms ease-in ;
+    opacity: 0;
+}
+.extra4{
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    bottom: 10%;
+    right:2%;
+    transition: all 450ms ease-in ;
+    opacity: 0;
+}
+
+.cardParent{
+     transform: skewY(2deg);
+     perspective: 500px;
+    
+}
+.cardParent:hover .extra , .cardParent:hover .extra2, .cardParent:hover .extra3, .cardParent:hover .extra4{
+    opacity: 1;
+    transform: scale(1.3);
+    
+}
+.container{
+    overflow-x: hidden;
+    width: 100%;
+   
+}
+
+.ul{
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    animation: toleft  80s linear infinite;
+    width: 200%;
+}
+.li{
+    flex-shrink:0;
+}
+.li img{
+    filter: grayscale(100%);
+    transition: filter 250ms ;
+}
+.li img:hover{
+    filter: grayscale(0);
+}
+
+@keyframes toleft{
+    from{
+        transform: translateX(0);
+    }to{
+        transform: translateX(-50%);
+    }
+}
