@@ -13,6 +13,11 @@ const nextConfig = {
               hostname: 'via.placeholder.com',
              
             },
+            {
+              protocol: 'https',
+              hostname: 'res.cloudinary.com',
+             
+            },
           ],
     }
 };

@@ -5,7 +5,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaPinterestP } from 'react-icons/
 
 const Footer = () => {
   return (
-    <footer className=" w-full h-fit bg-black text-white py-10 relative">
+    <footer className="  w-full  h-fit bg-black text-white py-10 relative">
       <div className='absolute pointer-events-none opacity-30 bottom-0 w-20 h-20 bg-gradient-to-r from-blue-950 to-cyan-500 blur-lg  rounded-[50%] z-2'></div>
       <div className='absolute pointer-events-none opacity-30 bottom-0 right-0 w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 blur-lg  rounded-[50%] z-2'></div>
       <div className="container mx-auto px-4">

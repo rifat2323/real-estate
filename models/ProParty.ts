@@ -42,7 +42,8 @@ const pro = new mongoose.Schema({
      Number_Of_Sales:Number,
      Area:Number,
      Bed:String,
-     Bath:String
+     Bath:String,
+     discount:Number
    
 
 

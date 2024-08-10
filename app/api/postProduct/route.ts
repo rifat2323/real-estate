@@ -59,6 +59,8 @@ export async function POST(request: NextRequest) {
     const Area = parseInt(data.get("Area") as string, 10);
     const Bed = data.get("Bed") as string;
     const Bath = data.get("Bath") as string;
+    const discount = data.get("discount") as unknown as number || 1;
+  
 
     if (!file) {
         return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
@@ -66,7 +68,7 @@ export async function POST(request: NextRequest) {
    const arres = await file.arrayBuffer()
 
    const fileExtension = path.extname(file.name);
-   console.log(fileExtension)
+   
     const fileName =  file.name.replaceAll(" ", "_");
       const buffer = Buffer.from(arres)
 
@@ -88,10 +90,10 @@ export async function POST(request: NextRequest) {
         folder:"next",
         unique_filename:true
        })
-       console.log(result.secure_url)
+    
      const newProparty = await Property.create({
         Title,Price_Apart,Image:result.secure_url,Description,CountInStock,Location,For_Sale,
-        Price,Bed_and_Bath,Listing_Status,Type,Number_Of_Sales,Area,Bed,Bath
+        Price,Bed_and_Bath,Listing_Status,Type,Number_Of_Sales,Area,Bed,Bath,discount
     })
     unlink(`public/upload/${fileName}`)
     if(!newProparty){

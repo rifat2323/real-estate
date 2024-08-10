@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const FindAgentSection = () => {
   return (
-    <section className="flex flex-col md:flex-row justify-between items-center p-8  shadow-md dark:bg-gray-950    rounded-sm mt-11">
+    <section className="flex h-fit  flex-col md:flex-row justify-between items-center p-8  shadow-md dark:bg-gray-950    rounded-sm mt-11">
       <div className="w-full md:w-1/2">
         <h1 className="text-4xl font-bold mb-4">Find an Agent</h1>
         <p className="mb-4">

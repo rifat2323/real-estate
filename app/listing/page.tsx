@@ -5,6 +5,8 @@ import House1 from '@/public/house/house1.png'
 import House2 from '@/public/house/house2.png'
 import House3 from '@/public/house/house3.png'
 import { StaticImageData } from 'next/image'
+import connectDB from '@/db/connectDb'
+import Property from '@/models/ProParty'
 
 type Cards ={
   _id:string,
@@ -16,8 +18,45 @@ type Cards ={
   area:string,
   price:string
 }[]
+type Card ={
+  _id:string,
+  Image: string,
+  Title:string,
+  Description:string,
+  Bed:string,
+  Bath:string,
+  Area:string,
+  Price_Apart:string
+  CountInStock:number,
+  Rating:number,
+  AgentName:string,
+  Location:string,
+  For_Sale:string,
+  Price:string,
+  Bed_and_Bath:string,
+  Listing_Status:string,
+  Type:string,
+  Number_Of_Sales:number,
+  discount:number
 
-const Listing = ({searchParams}:{searchParams:{[key:string]:string | string[]| undefined}}) => {
+}[]
+
+const getData = async ()=>{
+  try{
+    await connectDB()
+    const data = Property.find().sort({createdAt:-1}).limit(30)
+    return data
+
+  }catch(err){
+    return []
+  }
+}
+
+
+
+const Listing = async ({searchParams}:{searchParams:{[key:string]:string | string[]| undefined}}) => {
+
+   const data:Card = await getData()
 
   const searchArea = searchParams.ForSales
   console.log(searchArea )
@@ -63,7 +102,7 @@ const Listing = ({searchParams}:{searchParams:{[key:string]:string | string[]| u
     <section className=' mt-5 w-full min-h-screen flex flex-col justify-center relative'>
    <TopComponent/>
 
-   <Producat searchArea ={searchArea} totalResult={30} DetailsCard={DetailsCard}/>
+   <Producat searchArea ={searchArea} totalResult={30} DetailsCard={data}/>
 
     </section>
   )

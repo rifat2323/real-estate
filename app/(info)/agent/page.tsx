@@ -10,6 +10,7 @@ import House2 from '@/public/house/house2.png'
 import House3 from '@/public/house/house3.png'
 import connectDB from '@/db/connectDb';
 import Property from '@/models/ProParty';
+import Images from '@/components/CoverImage/Images';
 const agents = [
   {
     name: 'John Doe',
@@ -140,9 +141,10 @@ const AgentList = async () => {
          DetailsCard.map(item=>(
          <Card key={item._id} className=' max-w-[250px] sm:max-w-[350px] h-[350px] lg:h-[350px]'>
            
-           <Image src={item.image} className=' max-sm:h-[150px] max-md:h-[150px]  w-full h-[200px] rounded-sm object-cover' width={400} height={400} alt='property image'
+          {/*  <Image src={item.image} className=' max-sm:h-[150px] max-md:h-[150px]  w-full h-[200px] rounded-sm object-cover' width={400} height={400} alt='property image'
               
-                />
+                /> */}
+                <Images url={item.image}/>
             <div className='mt-2'></div>
             <div className=' w-full justify-between items-center flex'>
 
