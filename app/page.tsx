@@ -14,6 +14,7 @@ import { FaGithub } from "react-icons/fa";
 import { TbBrandFiverr } from "react-icons/tb";
 import { FaLinkedin } from "react-icons/fa";
 
+
 import {
   Tooltip,
   TooltipContent,
@@ -21,6 +22,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 export default function Home() {
+
+
   const social = [
    {
     icons:<FaFacebookSquare size={25}/>,
@@ -116,7 +119,7 @@ export default function Home() {
    ]
   return (
     <main className="flex min-h-screen flex-col my-4 mx-4 ">
-      <section className={`${styles.hero} max-md:py-5 max-md:flex-col dark:shadow-lg  dark:bg-gradient-to-r from-[#101219a6] to-[#090d17a6] max-md:justify-center max-md:items-center`}>
+      <section  className={`${styles.hero} max-md:py-5 max-md:flex-col dark:shadow-lg  dark:bg-gradient-to-r from-[#101219a6] to-[#090d17a6] max-md:justify-center max-md:items-center`}>
      <div className="flex flex-col gap-4 items-start max-md:items-center max-md:w-full ml-3">
       <p className=" text-lg max-md:text-xl max-sm:text-base font-normal">welcome to my website</p>
       <h2 className=" text-6xl max-md:text-4xl max-sm:text-xl font-extrabold">Manage Your Property</h2>
@@ -124,7 +127,7 @@ export default function Home() {
        <input type="email" placeholder="Enter Your Email" className=" dark:bg-slate-200 dark:text-black px-2 outline-none rounded-2xl w-[150px] sm:w-full border-none h-full  flex-1 "/>
         <button className=" bg-slate-950 rounded-2xl h-full px-4 max-sm:text-sm text-white">Get a Quote</button>
        </div>
-      
+
     </div> 
    
     <Image src={'/home1.png'} width={800} height={800} quality={100} className=" max-md:w-[300px] max-md:h-[300px] w-[400px] h-[400px] max-md:items-center" alt="hero image"/>
@@ -157,7 +160,7 @@ export default function Home() {
     {
       bestProjects.map((item,index)=>(
 
-       <div key={index} className=" shadow-light1 dark:shadow-dark1 h-[350px] w-[370px] flex flex-col rounded-lg border-stone-300  dark:border-stone-800 border justify-between items-center  ">
+       <div  key={index} className=" shadow-light1 dark:shadow-dark1 h-[350px] w-[370px] flex flex-col rounded-lg border-stone-300  dark:border-stone-800 border justify-between items-center  ">
         <div className=" w-full rounded-lg  h-3/5 ">
         <Image src={item.image} width={500} height={500} quality={80} alt="house picture" className=" w-full h-full  rounded-lg"/>
 

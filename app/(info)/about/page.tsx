@@ -1,4 +1,5 @@
 import React from 'react'
+import dynamic from 'next/dynamic';
 import styes from './about.module.css'
 import { BsHouseUp } from "react-icons/bs";
 import { BiBuildingHouse } from "react-icons/bi";
@@ -7,15 +8,18 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import { FcCamera } from "react-icons/fc";
 import { FcAutomotive } from "react-icons/fc";
 import { SiJetpackcompose } from "react-icons/si";
-import { FaPeopleRoof } from "react-icons/fa6";
 import { GiPayMoney } from "react-icons/gi";
 import { GiReceiveMoney } from "react-icons/gi";
 import { MdOutlineEmojiPeople } from "react-icons/md";
-import { FaPeopleRobbery } from "react-icons/fa6";
+import { FaPeopleRobbery, FaPeopleRoof } from "react-icons/fa6";
 import Image from 'next/image'
 import { FaMapLocationDot } from "react-icons/fa6";
-import Map from './Map'
+
+const Map = dynamic(() => import('./Map'), { ssr: false });
 const About = () => {
+ 
+  
+
   const cards =[
    {
     icon:<BsHouseUp size={32} color='white'/>,

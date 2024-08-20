@@ -6,7 +6,49 @@ import { BsPeopleFill } from "react-icons/bs";
 import Cards from '@/components/reUseable/Cards';
 import { Button } from '@/components/ui/button';
 import FindAgentSection from '@/components/Agent';
-const page = () => {
+import connectDB from '@/db/connectDb';
+import Property from '@/models/ProParty';
+import Link from 'next/link';
+
+const discount = async ()=>{
+  try{
+    await connectDB()
+    const data = Property.find({discount:{$gt:40}}).limit(30)
+    return data
+
+  }catch(error){
+    console.log(error)
+    return []
+  }
+}
+const NewArrive = async ()=>{
+  try{
+    await connectDB()
+    const data = Property.find().sort({createdAt:-1}).limit(30)
+    return data
+
+  }catch(error){
+    console.log(error)
+    return []
+  }
+}
+const HotDeals = async ()=>{
+  try{
+    await connectDB()
+    const data = Property.find({Price_Apart:{$lt:300000}}).limit(30)
+    return data
+
+  }catch(error){
+    console.log(error)
+    return []
+  }
+}
+
+
+const page =  async () => {
+  const discountData = await discount()
+  const NewArrives = await NewArrive()
+  const HotDealss = await HotDeals()
   const cards =[
     {
     heading:"10000+",
@@ -93,42 +135,42 @@ const page = () => {
       <h1 className='text-4xl font-bold font-serif mb-4 md:text-6xl text-slate-900 dark:text-slate-300'>Up to 40% off on top projects</h1>
       <div className='flex my-12 w-full justify-center items-center  gap-4 flex-wrap'>
         {
-          bestProjects.map((item,index)=>(
-            <Cards index={index} des={item.des} image={item.image} star={item.star} title={item.title} key={index}/>
+          discountData.map((item,index)=>(
+            <Cards index={item?._id} des={item?.Description} image={item?.Image} star={item?.Rating} title={item?.Title} key={item?._id}/>
 
           ))
         }
 
       </div>
-      <Button>Show All</Button>
+      <Link href={"/deals/discount"}><Button>Show All</Button></Link>
 
     </div>
     <div className=' w-full h-fit py-4 flex justify-center items-center flex-col'>
       <h1 className='text-4xl font-bold font-serif mb-4 md:text-6xl text-slate-900 dark:text-slate-300'>New Arrivals</h1>
       <div className='flex my-12 w-full justify-center items-center  gap-4 flex-wrap'>
         {
-          bestProjects.map((item,index)=>(
-            <Cards index={index} des={item.des} image={item.image} star={item.star} title={item.title} key={index}/>
+          NewArrives.map((item,index)=>(
+            <Cards index={item?._id} des={item?.Description} image={item?.Image} star={item?.Rating} title={item?.Title} key={item?._id}/>
 
           ))
         }
 
       </div>
-      <Button>Show All</Button>
+     <Link href={'/listing'}> <Button>Show All</Button></Link>
 
     </div>
     <div className=' w-full h-fit py-4 flex justify-center items-center flex-col'>
       <h1 className='text-4xl font-bold font-serif mb-4 md:text-6xl text-slate-900 dark:text-slate-300'>Hot Deals</h1>
       <div className='flex my-12 w-full justify-center items-center  gap-4 flex-wrap'>
         {
-          bestProjects.map((item,index)=>(
-            <Cards index={index} des={item.des} image={item.image} star={item.star} title={item.title} key={index}/>
+          HotDealss.map((item,index)=>(
+            <Cards index={item?._id} des={item?.Description} image={item?.Image} star={item?.Rating} title={item?.Title} key={item?._id}/>
 
           ))
         }
 
       </div>
-      <Button>Show All</Button>
+      <Link href={"/deals/HotDeals"}><Button>Show All</Button></Link>
 
     </div>
    <FindAgentSection/>

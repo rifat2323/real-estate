@@ -17,6 +17,7 @@ const us = new mongoose.Schema({
         type:String,
         required:true
     },
+    Last_Name:String,
     City:String,
     Country:String,
     Current_Balance:Number

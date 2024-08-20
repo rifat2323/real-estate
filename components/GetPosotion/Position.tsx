@@ -1,17 +1,26 @@
+"use client"
+
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
+
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-const Position = () => {
-  const [position, setPosition] = useState<[number,number]>([51.505, -0.09]); 
+const Position = ({city}:{city:string}) => {
+  const [position, setPosition] = useState<[number,number] | null>(null); 
+   const [load,setLoad] = useState(false)
+   console.log(position)
+   useEffect(()=>{
+    setLoad(true)
+   },[])
   useEffect(() => {
-    const fetchCoordinates = async (city:string) => {
+    const fetchCoordinates = async () => {
       try {
         const response = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&format=json`,{cache:"no-store"});
         const data = await response.json();
 
         if (data.length > 0) {
+          console.log(data[0])
           const { lat, lon } = data[0];
           setPosition([parseFloat(lat), parseFloat(lon)]);
         } else {
@@ -22,17 +31,34 @@ const Position = () => {
       }
     };
 
-    fetchCoordinates('London'); // Replace with the city name from your database
-  }, []);
+    fetchCoordinates(); // Replace with the city name from your database
+  }, [city]);
+  
 
   return (
-    <MapContainer center={position} zoom={13} style={{ height: '100%', width: '100%' }}>
-      <TileLayer
+    <>
+    {
+      position ?(
+        <MapContainer  center={position} zoom={13} scrollWheelZoom={false}  style={{ width:"100%", height:"100%"}}>
+        <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="&copy; OpenStreetMap contributors"
       />
-      <Marker position={position}></Marker>
+      <Marker position={position} riseOnHover >
+        <Popup>
+        House
+        </Popup>
+      </Marker>
     </MapContainer>
+
+      ):(
+        <div>loading map...</div>
+      )
+    }
+ 
+    </>
+   
+
   );
 };
 
