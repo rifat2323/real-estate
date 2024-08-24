@@ -1,4 +1,4 @@
-import {varifyToken} from "@/lib/auth";
+import {varifyToken} from "@/lib/action";
 import {redirect} from "next/navigation";
 
 const page = async () => {

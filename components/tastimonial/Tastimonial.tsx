@@ -123,7 +123,7 @@ const TestimonialSlider: React.FC = () => {
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl lg:text-6xl mb-10 font-bold dark:text-slate-300 text-gray-800">Our Happy Customer</h2>
         <p className="text-gray-600  dark:text-slate-300 mt-2">
-          I'm glad to hear that you had a positive experience with your real estate purchase. Buying property can be a significant investment and it's important to do your research and feel confident in your decision.
+          {"I'm"} glad to hear that you had a positive experience with your real estate purchase. Buying property can be a significant investment and {"it's"} important to do your research and feel confident in your decision.
         </p>
       </div>
 

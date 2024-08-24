@@ -6,7 +6,7 @@ export const POST = async (req: Request) => {
   await connectDB()
  try{
   const body =  await req.json()
-  const { Name, Email, Password,Mobile_Number,Last_Name,City,Country,Current_Balance } = body
+  const { Name, Email, Password,Mobile_Number,Last_Name,City,Country,Current_Balance,Image } = body
   if(!Name || !Email || !Password || !Mobile_Number || !Last_Name || !City || !Country || !Current_Balance){
     return NextResponse.json({ error: "Please fill all the fields" }, { status: 400 })
   }
@@ -16,7 +16,7 @@ export const POST = async (req: Request) => {
     
   }
   const hash = await bcrypt.hash(Password,10)
-  const user = await User.create({ Name, Email, Password:hash,Mobile_Number,Last_Name,City,Country,Current_Balance })
+  const user = await User.create({ Name, Email, Password:hash,Mobile_Number,Last_Name,City,Country,Current_Balance,Image })
   //return NextResponse.json({ Name:user }, { status: 201 })
   return NextResponse.json({ url: '/login' }, { status: 201 }) 
   

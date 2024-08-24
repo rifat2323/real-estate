@@ -61,8 +61,8 @@ const Footer = () => {
           <div className="w-full md:w-1/5">
             <h2 className="text-lg font-bold mb-4">Terms of use</h2>
             <ul className="space-y-2">
-              <li><a href="#" className="text-sm">Companies' Role</a></li>
-              <li><a href="#" className="text-sm">Companies' Brands</a></li>
+              <li><a href="#" className="text-sm">{"Companies' Role"}</a></li>
+              <li><a href="#" className="text-sm">{"Companies' Brands"}</a></li>
               <li><a href="#" className="text-sm">Home Loans</a></li>
               <li><a href="#" className="text-sm">Registration</a></li>
             </ul>

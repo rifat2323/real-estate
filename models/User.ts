@@ -5,6 +5,7 @@ const us = new mongoose.Schema({
         type:String,
         required:true
     },
+    Image:String,
     Email:{
         type:String,
         required:true

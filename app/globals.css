@@ -80,6 +80,7 @@
     transition-property: background;
     transition-duration: 200ms;
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    overflow: hidden;
   }
   html{
     overflow-x: hidden;

@@ -30,7 +30,7 @@ const Large = () => {
 
         <Links href={'/listing'}  className={`font-normal  ${pathname === '/listing' && 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white'} text-md px-2 py-2 rounded-lg`}>Project</Links>
         <FiSearch onClick={()=>setIsSearchClick((prev)=>!prev)} size={25} color='#232323'  style={{color:"#232323", cursor:"pointer"}}/>
-    <Input onChange={(e)=>setSearch(e.target.value)} value={search}  placeholder='search anything' className={` ${isSearchClick && ' opacity-0 -translate-y-[10vh] pointer-events-none'} max-md:hidden absolute top-[85px] z-10 transition ring-0`}/>
+    <Input onChange={(e)=>setSearch(e.target.value)} value={search}  placeholder='search anything' className={` ${isSearchClick && ' opacity-0 -translate-y-[10vh] pointer-events-none'} max-md:hidden absolute top-[52px]  z-[50] transition ring-0`}/>
     </motion.div>
   )
 }

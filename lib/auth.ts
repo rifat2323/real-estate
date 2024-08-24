@@ -1,5 +1,5 @@
 import jwt from  'jsonwebtoken'
-import {cookies} from "next/headers";
+
 type USer = {
     Name: string;
     Email: string;
@@ -12,10 +12,11 @@ type USer = {
 
 }
 export const  Regis = async (details:USer)=>{
+    const nes = {...details,Image:`https://robohash.org/${details.Name}`}
     try{
         const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/user/api/reg`,{
             method:"POST",
-            body:JSON.stringify(details)
+            body:JSON.stringify(nes)
         })
         const data = await response.json();
        return data.url
@@ -38,26 +39,11 @@ export  const createToken = async (email:string)=>{
         }
     }catch (e) {
         console.log(e)
+        return null
     }
 }
 
-export const varifyToken = async  ()=>{
-    "use server"
-   const token =  cookies().get("refreshToken")?.value
-    if(!token) return  null
-    try{
-     const decode =  jwt.verify(token, process.env.REFRESH_KEY!);
-     return  decode?.email
 
-    }catch (err:any){
-        if (err instanceof jwt.JsonWebTokenError) {
-            console.log(`JWT Error: ${err.message}`);
-        } else {
-            console.log(`Other Error: ${err.message}`);
-        }
-        return null;
-    }
-}
 
 
 

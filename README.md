@@ -13,7 +13,7 @@ pnpm dev
 bun dev
 ```
 ## There are lot of Env file
-```MONGO_URI```,```NEXT_PUBLIC_api_key```,```NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME```,```CLOUDINARY_API_SECRET``` . those are necessary 
+```MONGO_URI```,```NEXT_PUBLIC_api_key```,```NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME```,```CLOUDINARY_API_SECRET```,```NEXT_PUBLIC_URL```,```ACCESS_KEY```,```REFRESH_KEY``` . those are necessary 
 
 ## finally 
 enjoy Your full coded website for free. don't forgot to give me a ```star```. also contact me for any project.
