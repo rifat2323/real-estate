@@ -74,22 +74,49 @@ const agents = [
   },
   // Add more agent objects as needed
 ];
+import CommonCard from '@/components/CommonCard/Common'
+type Card ={
+  _id:string,
+  Image: string,
+  Title:string,
+  Description:string,
+  Bed:string,
+  Bath:string,
+  Area:string,
+  Price_Apart:string
+  CountInStock:number,
+  Rating:number,
+  AgentName:string,
+  Location:string,
+  For_Sale:string,
+  Price:string,
+  Bed_and_Bath:string,
+  Listing_Status:string,
+  Type:string,
+  Number_Of_Sales:number,
+  discount:number
 
-const DBCheck = async () => {
+}[] | []
+const DBCheck = async ():Promise<Card> => {
   try{
-    await connectDB()
-    const data = Property.find()
-    return data
+ 
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/agent/api`,{cache:"no-store"})
+    if(!response.ok){
+      return []
+    }
+     const data =  response.json()
+     return data
 
   }catch(error){
     console.log(error)
+    return []
   }
 
 }
 
 const AgentList = async () => {
-  const l = await DBCheck()
-  console.log(l)
+  const l:Card = await DBCheck()
+ 
   const DetailsCard = [
     {
      _id:"85555555151",
@@ -138,44 +165,8 @@ const AgentList = async () => {
         <h1 className=' text-3xl md:text-4xl lg:text-6xl font-bold my-8'>Best sales This Month</h1>
         <div className=' w-full flex flex-wrap justify-center items-center gap-2'>
         {
-         DetailsCard.map(item=>(
-         <Card key={item._id} className=' max-w-[250px] sm:max-w-[350px] h-[350px] lg:h-[350px]'>
-           
-          {/*  <Image src={item.image} className=' max-sm:h-[150px] max-md:h-[150px]  w-full h-[200px] rounded-sm object-cover' width={400} height={400} alt='property image'
-              
-                /> */}
-                <Images url={item.image}/>
-            <div className='mt-2'></div>
-            <div className=' w-full justify-between items-center flex'>
-
-            <CardTitle className='pl-2 font-bold text-2xl '>${item.price}</CardTitle>
-            <Cart/>
-            </div>
-            <h1 className='pl-2 font-medium text-xl '>{item.title}</h1>
-            <CardDescription className="truncate pl-2 ">
-              
-              {item.desc}
-            </CardDescription>
-            <hr />
-            <CardFooter className=' flex justify-center gap-8 sm:gap-0 sm:justify-between  items-center flex-wrap lg:py-2'>
-                <div className=' flex justify-center items-center gap-1'>
-              <Bed color='#3dcc72' size={25} />
-              <p>{item.Bed} Bed</p>
-                </div>
-                <div className=' flex justify-center items-center gap-1'>
-              <ShowerHead color='#4088e6' size={25}/>
-              <p>{item.Bath} Bath</p>
-                </div>
-                <div className=' flex justify-center items-center gap-1'>
-              <Bed color='#e6652e' size={25}/>
-              <p>{item.area} Sqft</p>
-                </div>
-
-
-            </CardFooter>
-
-
-         </Card>
+         l.map(item=>(
+          <CommonCard item={item} key={item._id}/>
 
 
          ))

@@ -51,7 +51,7 @@ const page = async ({params}:{params:{id:string}}) => {
              <div style={{background:color}} className={`bg-cyan-500 w-[90%] rounded-lg flex justify-around items-center py-2.5`}>
                  <p className={'text-white'}>Book Now</p>
                  <p  className={'text-white'}>|</p>
-                 <Cart/>
+                 <Cart id={data?._id}/>
 
              </div>
          </div>

@@ -27,6 +27,7 @@ type Comments={
 
 const Rating = ( {id,Datas}:{id:string,Datas:Comments}) => {
     const router  = useRouter()
+    console.log(Datas)
     const Rat =[
         {
             image:'/comment/one.png',
@@ -99,7 +100,7 @@ const Rating = ( {id,Datas}:{id:string,Datas:Comments}) => {
  const [isClick,setIsClick] = useState<null | number>( null)
  const [RatingNumber,setRatingNumber] = useState<null | number>( null)
  const [Text,setText] = useState( '')
- const [Comments,SetComments] = useState(Datas)
+/*  const [Comments,SetComments] = useState(Datas) */
  const [loading,setIsloading] = useState(false)
 
   const GetImageArray = (rating:number)=>{
@@ -227,10 +228,10 @@ const Rating = ( {id,Datas}:{id:string,Datas:Comments}) => {
        <p    className={'text-xl font-medium mb-5'}>Some of comments </p>
 
        {
-           Comments?.map((item,index)=> {
+           Datas?.map((item,index)=> {
                const Items = GetImageArray(item?.Rat)
 
-
+              /* console.log(`text:${item.text}`) */
            return(
                <div   key={index} className={'shadow-2xl rounded-lg border border-gray-400 bg-white dark:bg-gray-900 w-full h-fit py-4 px-1 flex justify-center items-center gap-3'}>
                    <Image src={item?.UserId?.Image} width={700} height={700} className={'rounded-[50%] w-[100px] h-[100px]'} alt={'user Image'}/>

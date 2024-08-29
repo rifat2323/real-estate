@@ -13,8 +13,8 @@ const Images = ({url}:{url:string | StaticImageData }) => {
 
     }
   return (
-    <div style={{backgroundImage:"url(/pixel.jpg)",backgroundSize:"cover", backgroundPosition:"center"}} className='max-sm:h-[150px] max-md:h-[150px]  w-full h-[200px] rounded-sm object-cover'>
-       <Image onLoad={handelLoad} className={` w-full h-full  rounded-sm object-cover transition-all ${isLoad ? " opacity-100":"opacity-0"}`} alt='cover image' width={700} height={700} src={url}/>
+    <div style={{backgroundImage:"url(/pixel.jpg)",backgroundSize:"cover", backgroundPosition:"center"}} className='h-1/5 md:h-1/4  rounded-sm object-cover'>
+       <Image onLoad={handelLoad} className={` w-full h-full  rounded-sm rounded-b-none object-cover transition-all ${isLoad ? " opacity-100":"opacity-0"}`} alt='cover image' width={700} height={700} src={url}/>
     </div>
   )
 }

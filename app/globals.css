@@ -81,6 +81,7 @@
     transition-duration: 200ms;
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     overflow: hidden;
+    
   }
   html{
     overflow-x: hidden;
@@ -185,6 +186,16 @@
   scrollbar-width: none;
 }
 
+
+.child:hover {
+  transform: scale(1.01);
+}
+
+.child:hover ~ .child:not(:hover){
+  transform: scale(0.99);
+   transform-origin: bottom;
+   filter: grayscale(100%);
+}
 
 
 

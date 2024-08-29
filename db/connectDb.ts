@@ -7,6 +7,10 @@ const connectDB = async ()=>{
         console.log('Already connected to MongoDB');
         return mongoose.connection.readyState;
       }
+    if (mongoose.connections[0].readyState) {
+        console.log("Already connected to database.");
+        return;
+    }
    
     try{
      const conn = await mongoose.connect(process.env.MONGO_URI!)

@@ -13,7 +13,7 @@ const SmoothImage = ({url}:{url:string | StaticImageData }) => {
 
     }
   return (
-    <div style={{backgroundImage:"url(/pixel.jpg)",backgroundSize:"cover", backgroundPosition:"center"}} className='w-full rounded-lg  h-3/5'>
+    <div style={{backgroundImage:"url(/pixel.jpg)",backgroundSize:"cover", backgroundPosition:"center"}} className='w-full rounded-lg rounded-b-none   h-3/5'>
        <Image onLoad={handelLoad} className={` w-full h-full  rounded-lg  transition-all ${isLoad ? " opacity-100":"opacity-0"}`} alt='cover image' width={700} height={700} src={url}/>
     </div>
   )

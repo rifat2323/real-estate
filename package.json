@@ -21,6 +21,7 @@
     "core-js": "^3.37.1",
     "formidable": "^3.5.1",
     "framer-motion": "^11.3.28",
+    "greenlet": "^1.1.0",
     "jsonwebtoken": "^9.0.2",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "lucide-react": "^0.396.0",

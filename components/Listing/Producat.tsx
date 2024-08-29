@@ -22,6 +22,7 @@ import Images from '../CoverImage/Images';
 
 import Lbutton from './Lbutton'
 import Link from 'next/link'
+import CommonCard from '../CommonCard/Common';
 type Cards ={
     _id:string,
     image: StaticImageData | string,
@@ -67,55 +68,11 @@ const Producat = ({searchArea,totalResult,DetailsCard,countDocument,search}:{sea
         <p className=' font-light  text-base text-slate-500'>Total result: {totalResult}</p>
         </div>
  
-       <div className=' w-full flex min-h-screen justify-center items-center gap-4 flex-wrap mt-10'>
+       <div className='parentHover w-full flex min-h-screen justify-center items-center gap-8 flex-wrap mt-10'>
 
       {
          DetailsCard.map(item=>(
-         <Card key={item?._id} className=' max-w-[250px] sm:max-w-[350px] h-[350px] lg:h-[350px]'>
-             <meta name='description' content={item?.Description}></meta>
-             <meta name='DC.title' content={item?.Title}></meta>
-             <meta name='keywords' content={item?.Price_Apart}></meta>
-             <meta name='topic' content='sales building'></meta>
-             <meta name='og:title' content={item?.Title}></meta>
-             <meta name='og:type' content={item?.Title}></meta>
-             <meta name='og:image' content={item?.Image}></meta>
-             <meta name='og:description' content={item?.Description}></meta>
-             <title>{item?.Title}</title>
-                {/* <Image src={item.image} className='max-sm:h-[150px] max-md:h-[150px]  w-full h-[200px] rounded-sm object-cover' width={400} height={400} alt='property image'
-               
-                /> */}
-              <Link href={`/houses/${item?._id}`}>  <Images url= {item?.Image}/></Link>
-            <div className='mt-2'></div>
-            <div className=' w-full justify-between items-center flex'>
-
-            <CardTitle className='pl-2 font-bold text-2xl pointer-events-none cursor-none  '>${item?.Price_Apart}</CardTitle>
-            <Cart/>
-            </div>
-          <Link href={`/houses/${item?._id}`}>  <h1 className='pl-2 font-medium text-xl hover:underline '>{item?.Title}</h1></Link>
-            <CardDescription className="truncate pl-2 pointer-events-none  cursor-none ">
-              
-              {item?.Description}
-            </CardDescription>
-            <hr />
-            <CardFooter className=' w-full flex lg:mt-2  justify-center gap-[20px] sm:justify-between  items-center flex-wrap lg:py-2'>
-                <div className=' flex justify-center items-center gap-1'>
-              <Bed color='#3dcc72' size={25} />
-              <p>{item?.Bed} Bed</p>
-                </div>
-                <div className=' flex justify-center items-center gap-1'>
-              <ShowerHead color='#4088e6' size={25}/>
-              <p>{item?.Bath} Bath</p>
-                </div>
-                <div className=' flex justify-center items-center gap-1'>
-              <Bed color='#e6652e' size={25}/>
-              <p>{item?.Area} Sqft</p>
-                </div>
-
-
-            </CardFooter>
-
-
-         </Card>
+         <CommonCard item={item} key={item?._id}/>
 
 
          ))

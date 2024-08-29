@@ -1,8 +1,10 @@
-import React from 'react'
+"use client"
+import React,{useEffect,useState} from 'react'
 import BigStar from '@/components/comment/BigStar'
 
 import Rating from '@/components/comment/Rating';
-const getData =async (id:string)=>{
+import greenlet from 'greenlet'
+const getData =greenlet( async (id:string)=>{
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/houses/${id}/api/comment`,{
       method:"GET",
@@ -16,7 +18,7 @@ const getData =async (id:string)=>{
   }catch(error){
     console.log(error)
   }
-}
+})
 type Comment = {
   UserId: {
     Name: string;
@@ -33,7 +35,7 @@ type Ra = {
   Comments: Comment[]; 
   AverageRating: number;
 };
-const page = async ({ params}:{params: { id: string }}) => {
+const Page = ({ params}:{params: { id: string }}) => {
     //const percentage = Math.min(Math.max(rating, 0), 100); 
     const defaultData: Ra = {
       _id: '',
@@ -41,10 +43,21 @@ const page = async ({ params}:{params: { id: string }}) => {
       Comments: [],
       AverageRating: 0,
     };
- const data:Ra = await getData(params.id) || defaultData
+    const [data,setData] = useState<Ra>(defaultData)
+/*  let data:Ra   */ 
+ useEffect(()=>{
+  
+  const getDt = async ()=>{
+   const r = await getData(params.id) 
+   /* console.log(r) */
+   setData(r)
+  }
+  getDt()
+
+ },[params.id])
  
   
-    const percentage = data?.AverageRating*20 || 0; 
+    const percentage = data?.AverageRating!*20 || 0; 
   return (
     <div className=' bg-[#EEF7FF] dark:bg-[#152233] rounded-md w-full h-fit py-3 flex flex-col justify-center items-center'>
         <h1 className='text-base font-extralight text-slate-800 dark:text-gray-300'>Take a Look what people says</h1>
@@ -61,4 +74,4 @@ const page = async ({ params}:{params: { id: string }}) => {
   )
 }
 
-export default page
+export default Page
