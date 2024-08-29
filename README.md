@@ -36,9 +36,9 @@ Make sure to configure your environment variables for the project to run smoothl
 
 ## 📷 some ss
 
-[Screenshot of the project](./screen/s1.png)
-[Screenshot of the project](./screen/s2.png)
-[Screenshot of the project](./screen/s3.png)
+![Screenshot of the project](./screen/s1.png)
+![Screenshot of the project](./screen/s2.png)
+![Screenshot of the project](./screen/s3.png)
 
 
 ## 🔨 Building & Production
