@@ -3,6 +3,7 @@ import connectDB from "@/db/connectDb"
 import { NextResponse } from "next/server"
 import Rating from '@/models/Rating'
 import User from "@/models/User"
+import Property from "@/models/ProParty"
 
 
 
@@ -28,6 +29,7 @@ export const POST =  async (request:Request, {params}:{params:{id:string}})=>{
        }
         findHouse.Comments.push({UserId:findUser._id,text,Rat})
         await findHouse.save()
+        const updatedRating =  await Property.findOneAndUpdate({_id:params.id},{Rating:findHouse.AverageRating})
         return NextResponse.json(findHouse.Comments[findHouse.Comments.length -1])
 
 

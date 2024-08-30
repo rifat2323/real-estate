@@ -26,6 +26,7 @@ Make sure to configure your environment variables for the project to run smoothl
 - `NEXT_PUBLIC_URL`
 - `ACCESS_KEY`
 - `REFRESH_KEY`
+- `STRIP_KEY`
 
 ## ✨ Features
 
@@ -33,6 +34,11 @@ Make sure to configure your environment variables for the project to run smoothl
 - **Advanced Filtering**: Narrow down your search with powerful filtering options to find your dream property.
 - **Buying & Selling**: Easy and secure process to buy or sell properties directly on the platform.
 - **Smooth Animations**: Enjoy a polished experience with smooth transitions and animations throughout the site.
+- **Payment**: You can Payment with strip and have success and failed page.
+- **Rating** :  You can Comment and Rating any Product and that will be updated in real time.
+- **User** : Have User section where You can Find Wishlist and Your Purchase History .
+- **Agent** : You can talk to an agent and buy anything . Also You can be a agent too.
+- **Others** : Have Recent sells,Hot deals,Best For You page etc.Enjoy
 
 ## 📷 some ss
 
@@ -54,3 +60,8 @@ npm start
 # 🤝 Support & Contact
 
 If you enjoyed using this platform or found it helpful, please consider giving it a ⭐! For any questions or project inquiries, feel free to [contact me](https://rifatportfolionextjs.vercel.app/).
+[have any idea](https://www.fiverr.com/rifatul_islam1/build-beautiful-website-with-nextjs)
+
+# 🖋️ 
+IF you need any project . please, Contact me
+

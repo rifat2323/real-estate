@@ -19,6 +19,7 @@
     "cloudinary": "^2.4.0",
     "clsx": "^2.1.1",
     "core-js": "^3.37.1",
+    "express-rate-limit": "^7.4.0",
     "formidable": "^3.5.1",
     "framer-motion": "^11.3.28",
     "greenlet": "^1.1.0",
@@ -35,8 +36,10 @@
     "react-intersection-observer": "^9.13.0",
     "react-leaflet": "^4.2.1",
     "sharp": "^0.33.5",
+    "stripe": "^16.9.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^10.0.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
@@ -48,6 +51,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",

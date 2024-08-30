@@ -26,7 +26,7 @@ const Mobile = () => {
 
 
     <Links href={'/listing'}  className={`font-normal hover:text-white hover:bg-gradient-to-r from-indigo-500 to-blue-500 ${pathname === '/listing' && 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white '} w-full text-md px-2 py-2 rounded-lg`}>Project</Links>
-    <Links href={'/wishlist'} className={`font-normal flex justify-start items-start gap-2 hover:text-white hover:bg-gradient-to-r from-indigo-500 to-blue-500 ${pathname === '/wishlist' && 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white '} w-full text-md px-2 py-2 rounded-lg`} > <span className='md:hidden text-base font-light'>Wishlist</span><CgShoppingBag size={25} className=' hover:scale-95 hover:text-orange-500 hover:fill-orange-500 transition-all'/> </Links>
+    
       <Links href={'/user'} className={`font-normal flex justify-start items-start gap-2 hover:text-white hover:bg-gradient-to-r from-indigo-500 to-blue-500 ${pathname === '/user' && 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white '} w-full text-md px-2 py-2 rounded-lg`} > <span className='md:hidden text-base font-light'>User</span><FaUser size={25} className=' hover:scale-95 hover:fill-orange-500 transition-all'/> </Links>
 
 </div>

@@ -10,6 +10,7 @@ import connectDB from '@/db/connectDb';
 import Property from '@/models/ProParty';
 import Link from 'next/link';
 
+
 const discount = async ()=>{
   try{
     await connectDB()

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import Cart from '@/components/Listing/Cart'
 import getColorFromImage from "@/lib/GetColor";
+import BuyButton from '@/components/CommonCard/BuyButton'
 
 const Position = dynamic(() => import('@/components/GetPosotion/Position'), {ssr:false})
 
@@ -49,7 +50,7 @@ const page = async ({params}:{params:{id:string}}) => {
              <p className={`text-xl font-bold`}>Today Price: <span style={{color:color}} className={`text-${color}`}>{afterPRice}</span> </p>
              <p className={`text-base font-light`}>{data?.Description}</p>
              <div style={{background:color}} className={`bg-cyan-500 w-[90%] rounded-lg flex justify-around items-center py-2.5`}>
-                 <p className={'text-white'}>Book Now</p>
+                 <BuyButton id={params?.id} className={'text-white flex justify-center items-center'}/>
                  <p  className={'text-white'}>|</p>
                  <Cart id={data?._id}/>
 

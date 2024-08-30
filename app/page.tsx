@@ -13,7 +13,9 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import { TbBrandFiverr } from "react-icons/tb";
 import { FaLinkedin } from "react-icons/fa";
-
+import Buy from '@/models/Buy'
+import Link from 'next/link'
+import connectDB from "@/db/connectDb";
 
 import {
   Tooltip,
@@ -21,8 +23,23 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-export default function Home() {
 
+const getData = async  ()=>{
+   await connectDB()
+  try{
+    const data =  await Buy.find({}).populate('propertyId').sort({createdAt:-1}).limit(25)
+    const property = await data.map((item)=>item.propertyId)
+    return property
+
+
+  }catch(error){
+    console.log(error)
+  }
+}
+
+export default async function Home() {
+ const data = await getData()
+ 
 
   const social = [
    {
@@ -73,34 +90,7 @@ export default function Home() {
 
   ]
 
-   const bestProjects = [
-    {
-      title:"Rifat vailla I",
-      des: " lorem ipsam dolor sit amet consectetur adipiscing elit loream ipsam",
-      image:"/home/home1.jpg",
-       star:4
-    },
-    {
-      title:"Rifat vailla II",
-      des: " lorem ipsam dolor sit amet consectetur adipiscing elit loream ipsam",
-      image:"/home/home2.jpg",
-       star:3
-    },
-    {
-      title:"Rifat vailla III",
-      des: " lorem ipsam dolor sit amet consectetur adipiscing elit loream ipsam",
-      image:"/home/home-3.jpg",
-       star:2
-    },
-    {
-      title:"Rifat vailla IV",
-      des: " lorem ipsam dolor sit amet consectetur adipiscing elit loream ipsam",
-      image:"/home/home-4.jpg",
-       star:5
-    },
- 
 
-   ]
 
    const office = [
      {
@@ -158,20 +148,20 @@ export default function Home() {
     </div>
     <div className=" flex my-12 w-full justify-center items-center  gap-4 flex-wrap ">
     {
-      bestProjects.map((item,index)=>(
+      data?.map((item,index)=>(
 
-       <div  key={index} className=" shadow-light1 dark:shadow-dark1 h-[350px] w-[370px] flex flex-col rounded-lg border-stone-300  dark:border-stone-800 border justify-between items-center  ">
+       <div  key={item?._id} className=" shadow-light1 dark:shadow-dark1 h-[350px] w-[370px] flex flex-col rounded-lg border-stone-300  dark:border-stone-800 border justify-between items-center  ">
         <div className=" w-full rounded-lg  h-3/5 ">
-        <Image src={item.image} width={500} height={500} quality={80} alt="house picture" className=" w-full h-full  rounded-lg"/>
+        <Image src={item.Image} width={500} height={500} quality={80} alt="house picture" className=" w-full h-full  rounded-lg"/>
 
         </div>
        <div className=" mb-4 pl-2 flex flex-col justify-center items-start">
-        <h3  className=" text-xl font-semibold mb-2" >{item.title}</h3>
-        <p className=" max-sm:text-sm text-base  font-light mb-2" >{item.des}</p>
+       <Link href={`/houses/${item?._id}`}> <h3  className=" text-xl font-semibold mb-2" >{item?.Title}</h3></Link>
+        <p className=" max-sm:text-sm text-base  font-light mb-2" >{item?.Description}</p>
         <div className=" mb-6 flex justify-center items-center my-2 gap-1">
           {
             Array.from({length:5}).map((_item,index)=>(
-             <FaStar key={index} size={21} color={item.star>=index+1?"yellow":"gray"}/>
+             <FaStar key={index} size={21} color={item?.Rating>=index+1?"yellow":"gray"}/>
 
 
             ))
